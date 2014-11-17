@@ -109,6 +109,59 @@ jade里不允许有空行，比如我们在html里可以写的很随意
 1. 空格
 2. tab（推荐使用tab）
 
+### 变量
+
+```
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src='/javascripts/jquery.min.js')
+  body
+    block content
+```
+
+这里的`title= title`代码里的`=`代表后面接的是变量。而且在子页面通过extends继承的也可以使用该变量。
+
+
+### 内插法
+
+	p #user #{name} #{email}
+	
+	
+### 反转义变量!{html}
+
+	var html = "<script></script>"
+
+	!{html}
+	
+### 注释
+
+#### 块注释
+
+	body
+		//
+		#content
+			h1 CSSer,关注Web前端技术
+
+#### 条件注释
+
+	body
+	/if IE
+	    a(href='http://www.mozilla.com/en-US/firefox/') Get Firefox
+
+### 块扩展
+
+块扩展允许创建单行的简洁嵌套标记，下面的示例与上例输出相同：
+
+  ul
+    li.first: a(href='#') foo
+    li: a(href='#') bar
+    li.last: a(href='#') baz
+		
+		
+		
 ## 布局
 
 layout.jade
@@ -193,3 +246,4 @@ jade效率基准测试&预编译&nodejs工作流
 
 
 - http://paularmstrong.github.io/node-templates/
+- Jade模板引擎入门教程http://www.cnblogs.com/fullhouse/archive/2011/07/18/2109945.html
