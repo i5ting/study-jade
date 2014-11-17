@@ -247,3 +247,4 @@ jade效率基准测试&预编译&nodejs工作流
 
 - http://paularmstrong.github.io/node-templates/
 - Jade模板引擎入门教程http://www.cnblogs.com/fullhouse/archive/2011/07/18/2109945.html
+- https://github.com/jadejs/jade/blob/master/Readme_zh-cn.md
