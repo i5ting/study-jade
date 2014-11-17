@@ -1,6 +1,8 @@
 study-jade
 ==========
 
+Jade是一款高性能简洁易懂的模板引擎，Jade是Haml的Javascript实现，在服务端（NodeJS）及客户端均有支持。
+
 官网 http://jade-lang.com/
 
 
