@@ -182,10 +182,12 @@ jade效率基准测试&预编译&nodejs工作流
 
 ## 总结
 
-- 利用布局layout
+- 利用layout定义布局模板
+- 利用include来引用公共模块
 - 使用tab而非space
 - 不管有没有属性，标签和value之间都要有空格
 - 预编译，提高模板执行效率
 - livereload，提高开发效率
+
 
 - http://paularmstrong.github.io/node-templates/
