@@ -219,6 +219,36 @@ block main_content
 - extends是指当前jade页面继承自哪个layout
 - block是指定义此处有模板块
 
+
+### each
+
+首先服务器端要返回数据
+
+```
+router.get('/list', function(req, res) {
+	var Survey = req.models.Survey;
+	Survey.find_list({},function(surveys){
+		res.render('survey/list', { title: '试卷列表',surveys: surveys });
+	});
+});
+```
+
+
+然后jade中
+
+```
+		ul
+			each item in surveys
+				li= item.name
+					a(href= item.static_page_name)= item.name
+```
+
+注意等号
+
+- li= item.name（无属性直接赋值变量）
+- a(href= item.static_page_name)= item.name（有属性，赋值变量）
+
+
 ## include
 
 ## 最佳实践
