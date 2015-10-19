@@ -255,6 +255,20 @@ router.get('/list', function(req, res) {
 
 可以把很多公用的部分，拆成partial
 
+## 内嵌script
+
+在html里直接使用script写代码，虽然不推荐，但偶尔还是会用的的
+
+比如weui里的模板
+
+```
+script.
+  function test(){
+    console.log('xxxx');
+  }
+```
+
+注意script后面的`.`
 
 ## 最佳实践
 
