@@ -125,10 +125,12 @@ html
 这里的`title= title`代码里的`=`代表后面接的是变量。而且在子页面通过extends继承的也可以使用该变量。
 
 
-### 内插法
+### 插写法
 
 	p #user #{name} #{email}
 	
+  
+这种是和ruby的语法一样的
 	
 ### 反转义变量!{html}
 
@@ -163,6 +165,16 @@ html
 		
 		
 ## 布局
+
+这里引一个java里的sitemesh布局框架
+
+![](1.gif)
+
+这个其实和jade的布局概念差不多，装饰模式不见得比编译更有优势
+
+布局最核心的是留空，其他的都放到layout里，复用layout。。。
+
+下面具体看看
 
 layout.jade
 
@@ -219,6 +231,9 @@ block main_content
 - extends是指当前jade页面继承自哪个layout
 - block是指定义此处有模板块
 
+这个是最最核心的概念，也是最最实用的~~
+
+结合include就是神器~~
 
 ### each
 
@@ -232,7 +247,6 @@ router.get('/list', function(req, res) {
 	});
 });
 ```
-
 
 然后jade中
 
@@ -254,6 +268,43 @@ router.get('/list', function(req, res) {
 在ruby里叫partial
 
 可以把很多公用的部分，拆成partial
+
+include分2种
+
+- 静态文件
+- 带data参数的
+
+
+### 静态文件
+
+```
+include ./includes/head.jade
+```
+
+### 带data参数的
+
+```
+include activity
+```
+
+它会把上下文的 activity 作为数据参数，传给
+
+```
+- var _action = activity._action == 'edit' ? '#' : '/activities/'
+- var _method = activity._action == 'edit' ? ""  : "post"
+- var _type   = activity._action == 'edit' ? "button"  : "submit"
+- var onClick  = activity._action == 'edit' ?  "click_edit('activity-" + activity._action + "-form','/activities/" + activity._id + "/')" : ""
+form(id='activity-#{ activity._action}-form',action="#{_action}", method="#{_method}",role='form')
+  each n in ['activity.title','activity.product_name','activity.product_count','activity.price','activity.detail','activity.expire_days','activity.start_date','activity.end_date','activity.owner_id','activity.created_at']
+    - m = eval(n);
+    div(class="field")
+      label #{n.split('.')[1]} #{m}
+      br
+      input(type='text',name="#{n.split('.')[1]}" ,value="#{ m == undefined ? '' : m }")
+        
+  div(class="actions") 
+    input(type='#{_type}',value='Submit',onClick='#{onClick}')
+```
 
 ## 内嵌script
 
